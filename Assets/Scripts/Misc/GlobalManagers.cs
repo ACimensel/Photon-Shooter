@@ -17,7 +17,7 @@ public class GlobalManagers : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
