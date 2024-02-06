@@ -6,10 +6,11 @@ using TMPro;
 
 public class NicknamePanel : LobbyPanelBase
 {
+	private const int MIN_CHAR_FOR_NICKNAME = 2;
+	
 	[Header("Nickname Panel Vars")]
 	[SerializeField] private TMP_InputField inputField;
 	[SerializeField] private Button createNicknameBtn;
-	private const int MIN_CHAR_FOR_NICKNAME = 2;
 	
 	public override void InitPanel(LobbyUIManager lobbyUIManager)
 	{

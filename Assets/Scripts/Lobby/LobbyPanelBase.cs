@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LobbyPanelBase : MonoBehaviour
 {
+	const string POP_IN_CLIP_NAME = "In";
+	const string POP_OUT_CLIP_NAME = "Out";
+	
 	[field: SerializeField, Header("Lobby Panel Base Vars")]
 	public LobbyPanelType panelType { get; private set; }
 	[SerializeField] private Animator panelAnimator;
@@ -26,13 +29,11 @@ public class LobbyPanelBase : MonoBehaviour
 	{
 		gameObject.SetActive(true);
 		
-		const string POP_IN_CLIP_NAME = "In";
 		panelAnimator.Play(POP_IN_CLIP_NAME);
 	}
 
 	protected void ClosePanel()
 	{
-		const string POP_OUT_CLIP_NAME = "Out";
 		StartCoroutine(Utils.PlayAnimAndSetStateWhenFinished(gameObject, panelAnimator, POP_OUT_CLIP_NAME, false));
 	}
 }
