@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class NetworkRunnerController : MonoBehaviour, INetworkRunnerCallbacks
 {
-	const int MAIN_SCENE_IDX = 1;
-
 	public event Action OnStartedRunnerConnection;
 	public event Action OnPlayerJoinedSuccessfully;
 	[SerializeField] private NetworkRunner networkRunnerPrefab;
@@ -49,7 +47,8 @@ public class NetworkRunnerController : MonoBehaviour, INetworkRunnerCallbacks
 
 		if (result.Ok)
 		{
-			await networkRunnerInstance.LoadScene(SceneRef.FromIndex(MAIN_SCENE_IDX));
+			const string SCENE_NAME = "MainGame";
+			networkRunnerInstance.SetActiveScene(SCENE_NAME);
 		}
 		else
 		{
@@ -84,12 +83,12 @@ public class NetworkRunnerController : MonoBehaviour, INetworkRunnerCallbacks
 
 	public void OnInput(NetworkRunner runner, NetworkInput input)
 	{
-		Debug.Log("OnInput");
+		// Debug.Log("OnInput");
 	}
 
 	public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)
 	{
-		Debug.Log("OnInputMissing");
+		// Debug.Log("OnInputMissing");
 	}
 
 	public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason)
@@ -105,9 +104,9 @@ public class NetworkRunnerController : MonoBehaviour, INetworkRunnerCallbacks
 		Debug.Log("OnConnectedToServer");
 	}
 
-	public void OnDisconnectedFromServer(NetworkRunner runner, NetDisconnectReason reason)
+	public void OnDisconnectedFromServer(NetworkRunner runner)
 	{
-		Debug.Log("OnDisconnectedFromServer");
+		throw new NotImplementedException();
 	}
 
 	public void OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request, byte[] token)
@@ -140,14 +139,9 @@ public class NetworkRunnerController : MonoBehaviour, INetworkRunnerCallbacks
 		Debug.Log("OnHostMigration");
 	}
 
-	public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ReliableKey key, ArraySegment<byte> data)
+	public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ArraySegment<byte> data)
 	{
-		Debug.Log("OnReliableDataReceived");
-	}
-
-	public void OnReliableDataProgress(NetworkRunner runner, PlayerRef player, ReliableKey key, float progress)
-	{
-		Debug.Log("OnReliableDataProgress");
+		throw new NotImplementedException();
 	}
 
 	public void OnSceneLoadDone(NetworkRunner runner)

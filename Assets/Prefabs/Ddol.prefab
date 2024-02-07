@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3042559510828840406}
   - component: {fileID: 7137917037531392941}
   m_Layer: 0
-  m_Name: Ddol
+  m_Name: DDOL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -22,7 +22,7 @@ public class PlayerSpawnerController : NetworkBehaviour, IPlayerJoined, IPlayerL
     {
         if (Runner.IsServer)
         {
-            int index = (playerRef.PlayerId - 1) % spawnPoints.Length;
+            var index = playerRef % spawnPoints.Length;
             Vector3 spawnPoint = spawnPoints[index].transform.position;
             // this function could be called on a non-host client as well, and if Runner.Spawn is called from non-host client,
             // it will return null, but we don't need to check since we check if Runner.IsServer already
@@ -36,9 +36,19 @@ public class PlayerSpawnerController : NetworkBehaviour, IPlayerJoined, IPlayerL
     {
         if (Runner.IsServer)
         {
+            foreach (var player in Runner.ActivePlayers)
+            {
+                Debug.Log($"ACTEST Player ID: {player.PlayerId}, Player toString: {player.ToString()}");
+            }
+            
             if (Runner.TryGetPlayerObject(playerRef, out var playerNetworkObject))
             {
+                Debug.Log($"ACTEST DespawnPlayer Despawn"); // todo looks like it didn't reach this part
                 Runner.Despawn(playerNetworkObject);
+            }
+            else
+            {
+                Debug.LogWarning($"ACTEST Player object for {playerRef} not found in dictionary.");
             }
             
             // Reset player object

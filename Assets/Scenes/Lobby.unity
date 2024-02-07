@@ -381,7 +381,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 91219238206053875, guid: 1c1cbb36f48ccd14abfa6cb29fea1f2f, type: 3}
       propertyPath: m_Name
-      value: Ddol
+      value: DDOL
       objectReference: {fileID: 0}
     - target: {fileID: 3042559510828840406, guid: 1c1cbb36f48ccd14abfa6cb29fea1f2f, type: 3}
       propertyPath: m_LocalPosition.x
