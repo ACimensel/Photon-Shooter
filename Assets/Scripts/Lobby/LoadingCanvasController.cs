@@ -28,9 +28,10 @@ public class LoadingCanvasController : MonoBehaviour
 
     private void OnStartedRunnerConnectionHandler()
     {
-        gameObject.SetActive(true);
+        GameObject go = gameObject;
+        go.SetActive(true);
         const string CLIP_NAME = "In";
-        StartCoroutine(Utils.PlayAnimAndSetStateWhenFinished(gameObject, animator, CLIP_NAME, true));
+        StartCoroutine(Utils.PlayAnimAndSetStateWhenFinished(go, animator, CLIP_NAME, true));
     }
 
     private void OnPlayerJoinedSuccessfullyHandler()
